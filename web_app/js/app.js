@@ -51,6 +51,6 @@ const renderImageLabel = (img, label) => {
 };
 
 
-fileInput.addEventListener("change", () => numberOfFiles.innerHTML = "Selected " + fileInput.files.length + " files", false);
+fileInput.addEventListener("change", () => fileCount.innerHTML = "Selected " + fileInput.files.length + " files", false);
 predictButton.addEventListener("click", () => predict(modelURL));
 clearButton.addEventListener("click", () => preview.innerHTML = "");
