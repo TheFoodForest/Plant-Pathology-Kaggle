@@ -2,14 +2,3 @@ body {
     font-family: 'Jura', sans-serif;
     text-align: center;
 }
-
-body img {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    max-height: 100vh;
-    max-width: 100vw;
-}
-
-img {
-    max-width: 100%;
-}

@@ -7,7 +7,6 @@ let model;
 const preview = document.getElementById("preview");
 const predictButton = document.getElementById("predict");
 const clearButton = document.getElementById("clear");
-const fileCount = document.getElementById("file-count");
 const fileInput = document.getElementById("file");
 
 function decodeImage(bits) {
@@ -49,7 +48,5 @@ const renderImageLabel = (img, label) => {
     reader.readAsDataURL(img);
 };
 
-
-fileInput.addEventListener("change", () => fileCount.innerHTML = "Selected " + fileInput.files.length + " files", false);
 predictButton.addEventListener("click", () => predict(modelURL));
 clearButton.addEventListener("click", () => preview.innerHTML = "");

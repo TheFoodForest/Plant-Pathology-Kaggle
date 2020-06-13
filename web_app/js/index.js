@@ -1,9 +1,8 @@
 const ImageLoaderWorker = new Worker('/workers/image-loader.worker.js')
 const imgElements = document.querySelectorAll('img[data-src]')
 
-// Once again, it's possible that messages could be returned before the
-// listener is attached, so we need to attach the listener before we pass
-// image URLs to the web worker
+// We should to attach the listener before we pass image URLs to the web worker
+// to catch messages sent prior to the event being attached
 ImageLoaderWorker.addEventListener('message', event => {
     // Grab the message data from the event
     const imageData = event.data
