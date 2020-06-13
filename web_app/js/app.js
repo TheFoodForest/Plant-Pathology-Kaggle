@@ -4,14 +4,18 @@ const modelURL = '/model/model.json';
 
 let model;
 
-const preview = document.getElementById("preview");
+const userOutput = document.getElementById("user-output");
 const predictButton = document.getElementById("predict");
 const clearButton = document.getElementById("clear");
 const fileInput = document.getElementById("file");
 
 function decodeImage(bits) {
+    console.log(bits);
     image = tf.browser.fromPixels(bits);
-    image = tf.cast(image, tf.float32) / 255;
+    image = tf.cast(image, tf.float64) / 255;
+    image = tf.Tensor.array.map((imgArr) => {
+        console.log(imgArr)
+    })
     image = tf.image.resize(image, image_size);
     if (!label) {
         return image
@@ -39,7 +43,7 @@ const predict = async(modelURL) => {
 const renderImageLabel = (img, label) => {
     const reader = new FileReader();
     reader.onload = () => {
-        preview.innerHTML += `<div class="image-block">
+        userOutput.innerHTML += `<div class="image-block">
                                       <img src="${reader.result}" class="image-block_loaded" id="source"/>
                                        <h2 class="image-block__label">${label}</h2>
                               </div>`;
@@ -49,4 +53,4 @@ const renderImageLabel = (img, label) => {
 };
 
 predictButton.addEventListener("click", () => predict(modelURL));
-clearButton.addEventListener("click", () => preview.innerHTML = "");
+clearButton.addEventListener("click", () => userOutput.innerHTML = "");
