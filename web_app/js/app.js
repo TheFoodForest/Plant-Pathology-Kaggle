@@ -45,7 +45,12 @@ const predict = async(modelURL, output) => {
     // })
 };
 
+<<<<<<< HEAD
 function renderImageLabel(label, accuracy, output) {
+=======
+
+const renderImageLabel = (label, accuracy, output) => {
+>>>>>>> 3b2486446f6b464f066b2899bbf101078f281379
     output.innerHTML += `${label}, with a ${accuracy * 100}%.`;
 };
 
