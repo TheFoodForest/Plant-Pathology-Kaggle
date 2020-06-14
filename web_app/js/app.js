@@ -5,9 +5,15 @@ const modelURL = '/model/model.json';
 let model;
 
 const userOutput = document.getElementById("user-output");
-const predictButton = document.getElementById("predict");
-const clearButton = document.getElementById("clear");
+const userPredictButton = document.getElementById("predict");
+const userClearButton = document.getElementById("clear");
 const fileInput = document.getElementById("file");
+const testOutputs = document.querySelectorAll("span.card-content")
+
+function chanNorm(image) {
+
+}
+
 
 function decodeImage(bits) {
     console.log(bits);
@@ -24,33 +30,29 @@ function decodeImage(bits) {
     }
 }
 
-const predict = async(modelURL) => {
+const predict = async(modelURL, output) => {
     if (!model) model = await tf.loadLayersModel(modelURL);
-    const files = fileInput.files;
+    // const files = fileInput.files;
 
-    [...files].map(async(file) => {
+    // [...files].map(async(file) => {
 
-        const reader = new FileReader();
-        const img = reader.result
-        const processedImage = decodeImage(img)
+    //     const reader = new FileReader();
+    //     const img = reader.result
 
-        // shape has to be the same as it was for training of the model
-        const prediction = model.predict(tf.reshape(processedImage, shape = [1, 28, 28, 1]));
-        const label = prediction.argMax(axis = 1).get([0]);
-        renderImageLabel(img, label);
-    })
-};
-const renderImageLabel = (img, label) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-        userOutput.innerHTML += `<div class="image-block">
-                                      <img src="${reader.result}" class="image-block_loaded" id="source"/>
-                                       <h2 class="image-block__label">${label}</h2>
-                              </div>`;
+    // const processedImage = decodeImage(img)
 
-    };
-    reader.readAsDataURL(img);
+    // shape has to be the same as it was for training of the model
+    const prediction = model.predict(tf.reshape(processedImage, shape = [1, 28, 28, 1]));
+    const label = prediction.argMax(axis = 1).get([0]);
+    const accuracy = prediction.argMax(axis = 1).get([1]); // idk if this is how we get the accuracy but i'm hopeful
+    renderImageLabel(label, accuracy, output);
+    // })
 };
 
-predictButton.addEventListener("click", () => predict(modelURL));
-clearButton.addEventListener("click", () => userOutput.innerHTML = "");
+
+const renderImageLabel = (label, accuracy, output) => {
+    output.innerHTML += `${label}, with a ${accuracy * 100}%.`;
+};
+
+userPredictButton.addEventListener("click", () => predict(modelURL, userOutput)); // needs to be made specific to user input images
+userClearButton.addEventListener("click", () => userOutput.innerHTML = "");
