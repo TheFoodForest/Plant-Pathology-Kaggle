@@ -24,7 +24,7 @@ function decodeImage(bits) {
     return image
 }
 
-const predict = async(modelURL, output) => {
+const predict = async(modelURL, image, output) => {
     if (!model) model = await tf.loadLayersModel(modelURL);
     // const files = fileInput.files;
 
@@ -36,7 +36,7 @@ const predict = async(modelURL, output) => {
     // const processedImage = decodeImage(img)
 
     // shape has to be the same as it was for training of the model
-    const prediction = model.predict(tf.reshape(processedImage, shape = [1, 28, 28, 1]));
+    const prediction = model.predict(tf.reshape(image, shape = [1, 28, 28, 1]));
     const label = prediction.argMax(axis = 1).get([0]);
     const accuracy = prediction.argMax(axis = 1).get([1]); // idk if this is how we get the accuracy but i'm hopeful
     renderImageLabel(label, accuracy, output);
@@ -46,7 +46,3 @@ const predict = async(modelURL, output) => {
 function renderImageLabel(label, accuracy, output) {
     output.innerHTML += `${label}, with a ${accuracy * 100}%.`;
 };
-
-function renderUserOutput() {
-    // this function builds the cards for the user uploaded images
-}

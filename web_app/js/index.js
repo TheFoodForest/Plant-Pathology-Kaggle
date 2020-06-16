@@ -1,6 +1,4 @@
 const testOutputs = document.querySelectorAll("span.card-content")
-
-
 const TestImageLoaderWorker = new Worker('/workers/image-loader.worker.js')
 const testImgElements = document.querySelectorAll('img[data-src]')
 
