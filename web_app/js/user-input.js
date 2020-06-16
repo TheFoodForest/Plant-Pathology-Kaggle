@@ -3,8 +3,8 @@ const userPredictButton = document.getElementById("predict");
 const userClearButton = document.getElementById("clear");
 const fileInput = document.getElementById("file-input");
 
-userPredictButton.addEventListener("click", () => predict(modelURL, userOutput)); // needs to be made specific to user input images
 userClearButton.addEventListener("click", () => userOutput.innerHTML = "");
+userPredictButton.addEventListener("click", () => predict(modelURL, userOutput)); // needs to be made specific to user input images
 
 
 fileInput.onchange = (e) => {
@@ -15,7 +15,8 @@ fileInput.onchange = (e) => {
         userOutput.innerHTML += `<div class="col s12 m6"> 
                                     <div class="card">
                                         <div class="card-image">
-                                        <img data-src="${url}">
+                                            <img data-src="${url}">
+                                        </div>
                                         <span class="card-content green-text text-darken-4">
                                             <!-- prediction for user output to go here -->
                                         </span>
@@ -23,7 +24,7 @@ fileInput.onchange = (e) => {
                                 </div>`
     })
 
-    const UserImageLoaderWorker = new Worker('/workers/image-loader.worker.js')
+    const UserImageLoaderWorker = new Worker('/js/workers/image-loader.worker.js')
     const userImgElements = document.querySelectorAll('img[data-src]')
 
 
@@ -65,3 +66,5 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems);
 });
+
+// onclick event listener to draw hidden canvas to get imageData
