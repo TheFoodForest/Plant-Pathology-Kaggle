@@ -1,7 +1,7 @@
 const testOutputs = document.querySelectorAll("span.card-content")
 const TestImageLoaderWorker = new Worker('/js/workers/image-loader.worker.js')
 const testImgElements = document.querySelectorAll('img[data-src]')
-const testImgPredictButtons = document.querySelectorAll('a.btn-floating')
+const testImgPredictions = document.querySelectorAll('div.card-image')
 const testCanvasDiv = document.querySelector('#canvas-div')
 
 
@@ -39,26 +39,32 @@ testImgElements.forEach(imageElement => {
 // Prediction button logic
 // onclick draw img to hidden canvas and then get ImageData to pass to TensorFlow
 
-testImgPredictButtons.forEach(item => {
-    item.addEventListener('click', event => {
-        // get img data-src by getting img element by ID using the name of the button
-        const imgEl = document.getElementsByName(item.id);
+testImgPredictions.forEach(item => {
+
+    const imgEl = item.querySelector('img')
+    const spanEl = item.querySelector('span')
+    const btnEl = item.querySelector('a')
+
+    btnEl.addEventListener('click', event => {
+
         // get image src and draw to hidden canvas then get ImageData and pass that to prediction functions, 
         testCanvasDiv.innerHTML += '<canvas id="hidden-canvas" width="256" height="256" hidden></canvas>';
         const testCanvas = document.querySelector('#hidden-canvas')
         const ctx = testCanvas.getContext("2d");
 
         const image = new Image;
-        image.src = imgEl[0].getAttribute('data-src')
+        image.src = imgEl.getAttribute('data-src')
         image.onload = () => {
-                ctx.drawImage(image, 0, 0);
-                imageData = ctx.getImageData(0, 0, 256, 256);
-                console.log(imageData);
-            }
+            ctx.drawImage(image, 0, 0);
+            imageData = ctx.getImageData(0, 0, 256, 256);
+            // console.log(imageData);
+
             // pass imageDATA to TensorFlow here
+            predict(imageData, spanEl)
+        }
 
         // erase canvas to conserve memory
-        testCanvasDiv.innerHTML = ''
+        testCanvasDiv.innerHTML = null
 
     })
 })
