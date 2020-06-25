@@ -1,9 +1,8 @@
-const testOutputs = document.querySelectorAll("span.card-content")
 const TestImageLoaderWorker = new Worker('/js/workers/image-loader.worker.js')
 const testImgElements = document.querySelectorAll('img[data-src]')
 const testImgPredictions = document.querySelectorAll('div.card-image')
 const testCanvasDiv = document.querySelector('#canvas-div')
-
+const testOutputs = document.querySelectorAll("span.card-content")
 
 // We should attach the listener before we pass image URLs to the web worker
 // to catch messages sent prior to the event being attached
