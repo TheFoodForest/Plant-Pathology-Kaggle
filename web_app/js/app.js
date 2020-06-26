@@ -9,10 +9,6 @@ let model;
 function chanNorm(image) {
     console.log(`In chanNorm: ${image}`)
         // imageTensor = tf.cast(imageTensor, 'float32') / 255;
-        // imgValues = imageTensor.arraySync();
-        // imgValues;
-        // imgArray = Array.from(imgValues);
-        // imgArray;
     return image
 }
 
@@ -22,7 +18,7 @@ function decodeImage(imageData) {
     console.log(`In decode: ${imageTensor}`);
     // imageTensor = tf.image.resizeBilinear(imageTensor, [256, 256]); // Needed for resize but HTML canvas tag is controlling size currently
     imageTensor = chanNorm(imageTensor);
-    imageTensor = imageTensor.expandDims(0, 256, 256, 3);
+    imageTensor = imageTensor.expandDims(); // 0, 256, 256, 3
     return imageTensor
 }
 
@@ -48,7 +44,7 @@ def decode_image(filename, label=None, image_size=(512, 512)):
 */
 
 
-function renderImageLabel(label, accuracy, output) {
+function renderImageLabel(label, accuracy = 0, output) {
     output.innerHTML = null;
     output.innerHTML += `<h4>${label}, with a ${accuracy * 100}% accuracy.</h4>`;
 };
@@ -63,7 +59,7 @@ function translateLabelOutput(prediction) {
         label = "Rust with Scab";
     } else if (prediction === 2) {
         label = "Rust";
-    } else {
+    } else if (prediction === 3) {
         label = "Scab";
     }
     return label
@@ -76,10 +72,9 @@ const predict = async(image, output) => {
     var processedImage = decodeImage(image);
 
     // shape has to be the same as it was for training of the model
-    var prediction = model.predict(processedImage, verbose = true); // tf.reshape(decodeImage(image), shape = [1, 28, 28, 1])
-    // const evaluation = model.evaluate(processedImage, batchSize = 1);
+    var prediction = model.predict(processedImage, verbose = true);
     var label = translateLabelOutput(prediction.argMax(axis = 1).arraySync()[0]);
     console.log(label);
-    // const accuracy = evaluation.argMax(axis = 1).print(); // idk if this is how we get the accuracy but i'm hopeful
-    renderImageLabel(label, accuracy = 0, output);
+    var accuracy = prediction[prediction.argMax(axis = 1)]; // idk if this is how we get the accuracy but i'm hopeful
+    renderImageLabel(label, accuracy, output);
 };
