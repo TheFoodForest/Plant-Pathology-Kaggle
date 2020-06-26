@@ -1,28 +1,41 @@
 /*
     model.js
 */
-// const inputImg = tf.fromPixels( /*fileUpload or deviceCamera*/ );
-
 let model;
 
 
 function chanNorm(image) {
-    console.log(`In chanNorm: ${image}`)
-        // imageTensor = tf.cast(imageTensor, 'float32') / 255;
+    const imgScalar = tf.scalar(255);
+    image = image.div(imgScalar);
+
+    const means = tf.tensor3d([
+        [
+            [0.4043033271154857, 0.5134412407909822, 0.3131933874018047]
+        ]
+    ]);
+    image.print();
+    imageTensors = tf.unstack(image)
+    imageTensors.map((tensor) => {
+        return tf.sub(tensor, means)
+    });
+    image = tf.stack(imageTensors);
+    image.print();
     return image
 }
 
 
 function decodeImage(imageData) {
     imageTensor = tf.browser.fromPixels(imageData);
-    console.log(`In decode: ${imageTensor}`);
-    // imageTensor = tf.image.resizeBilinear(imageTensor, [256, 256]); // Needed for resize but HTML canvas tag is controlling size currently
+    // console.log(`In decode: ${imageTensor}`);
+    imageTensor = tf.image.resizeBilinear(imageTensor, [256, 256]); // Needed for resize but HTML canvas tag is controlling size currently
     imageTensor = chanNorm(imageTensor);
     imageTensor = imageTensor.expandDims(); // 0, 256, 256, 3
     return imageTensor
 }
 
 /*
+
+Python Function to refactor
 
 def decode_image(filename, label=None, image_size=(512, 512)):
     bits = tf.io.read_file(filename)
@@ -45,13 +58,14 @@ def decode_image(filename, label=None, image_size=(512, 512)):
 
 
 function renderImageLabel(label, accuracy = 0, output) {
+    accuracy = Math.round(accuracy * 100);
     output.innerHTML = null;
-    output.innerHTML += `<h4>${label}, with a ${accuracy * 100}% accuracy.</h4>`;
+    output.innerHTML += `<h5>${label}, with a ${accuracy}% accuracy.</h5>`;
 };
 
 function translateLabelOutput(prediction) {
     // take prediction Tensor and return label as string
-    console.log(prediction);
+    // console.log(prediction);
     var label;
     if (prediction === 0) {
         label = "Healthy";
@@ -73,8 +87,12 @@ const predict = async(image, output) => {
 
     // shape has to be the same as it was for training of the model
     var prediction = model.predict(processedImage, verbose = true);
-    var label = translateLabelOutput(prediction.argMax(axis = 1).arraySync()[0]);
-    console.log(label);
-    var accuracy = prediction[prediction.argMax(axis = 1)]; // idk if this is how we get the accuracy but i'm hopeful
+    var accuracy = prediction.max().arraySync(); // idk if this is how we get the accuracy but i'm hopeful
+    // console.log(`In predict: ${prediction.max().arraySync()}`);
+    // prediction.print();
+    prediction = prediction.argMax(axis = 1).arraySync()[0];
+    // console.log(prediction);
+    var label = translateLabelOutput(prediction);
+    // console.log(accuracy);
     renderImageLabel(label, accuracy, output);
 };

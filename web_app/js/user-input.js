@@ -19,6 +19,7 @@ fileInput.onchange = (e) => {
                                         </div>
                                         <span class="card-content green-text text-darken-4">
                                             <!-- prediction for user output to go here -->
+                                            <h4>Prediction will show here.</h4>
                                         </span>
                                     </div>
                                 </div>`
