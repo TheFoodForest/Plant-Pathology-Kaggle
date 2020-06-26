@@ -5,27 +5,22 @@ let model;
 
 
 function chanNorm(image) {
-    const imgScalar = tf.scalar(255);
-    image = image.div(imgScalar);
-
     const means = tf.tensor3d([
         [
             [0.4043033271154857, 0.5134412407909822, 0.3131933874018047]
         ]
     ]);
     image.print();
-    imageTensors = tf.unstack(image)
-    imageTensors.map((tensor) => {
-        return tf.sub(tensor, means)
-    });
-    image = tf.stack(imageTensors);
-    image.print();
+    // image = tf.sub(image, means);
+    // image.print();
     return image
 }
 
 
 function decodeImage(imageData) {
     imageTensor = tf.browser.fromPixels(imageData);
+    const imgScalar = tf.scalar(255);
+    imageTensor = imageTensor.div(imgScalar);
     // console.log(`In decode: ${imageTensor}`);
     imageTensor = tf.image.resizeBilinear(imageTensor, [256, 256]); // Needed for resize but HTML canvas tag is controlling size currently
     imageTensor = chanNorm(imageTensor);
