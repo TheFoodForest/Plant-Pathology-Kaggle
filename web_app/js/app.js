@@ -11,8 +11,8 @@ function chanNorm(image) {
         ]
     ]);
     image.print();
-    // image = tf.sub(image, means);
-    // image.print();
+    image = tf.sub(image, means);
+    image.print();
     return image
 }
 
@@ -52,10 +52,10 @@ def decode_image(filename, label=None, image_size=(512, 512)):
 */
 
 
-function renderImageLabel(label, accuracy = 0, output) {
-    accuracy = Math.round(accuracy * 100);
+function renderImageLabel(label, certainty = 0, output) {
+    certainty = Math.round(certainty * 100);
     output.innerHTML = null;
-    output.innerHTML += `<h5>${label}, with a ${accuracy}% accuracy.</h5>`;
+    output.innerHTML += `<h5>${label}, with a ${certainty}% certainty.</h5>`;
 };
 
 function translateLabelOutput(prediction) {
@@ -82,12 +82,12 @@ const predict = async(image, output) => {
 
     // shape has to be the same as it was for training of the model
     var prediction = model.predict(processedImage, verbose = true);
-    var accuracy = prediction.max().arraySync(); // idk if this is how we get the accuracy but i'm hopeful
+    var certainty = prediction.max().arraySync(); // idk if this is how we get the certainty but i'm hopeful
     // console.log(`In predict: ${prediction.max().arraySync()}`);
     // prediction.print();
     prediction = prediction.argMax(axis = 1).arraySync()[0];
     // console.log(prediction);
     var label = translateLabelOutput(prediction);
-    // console.log(accuracy);
-    renderImageLabel(label, accuracy, output);
+    // console.log(certainty);
+    renderImageLabel(label, certainty, output);
 };

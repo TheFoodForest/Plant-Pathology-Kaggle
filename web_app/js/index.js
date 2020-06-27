@@ -37,7 +37,6 @@ testImgElements.forEach(imageElement => {
 
 // Prediction button logic
 // onclick draw img to hidden canvas and then get ImageData to pass to TensorFlow
-
 testImgPredictions.forEach(item => {
 
     const imgEl = item.querySelector('img');
@@ -60,13 +59,13 @@ testImgPredictions.forEach(item => {
 
             // pass imageDATA to TensorFlow here
             predict(imageData, spanEl);
-        }
+        };
 
         // erase canvas to conserve memory
         testCanvasDiv.innerHTML = null;
 
-    })
-})
+    });
+});
 
 // MaterializeCSS functions
 

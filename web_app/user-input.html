@@ -61,7 +61,8 @@
                 <!-- Upload new images from user to test -->
                 <form action="#">
                     <div class="file-field input-field">
-                        <div class="btn green darken-2">
+                        <a class="waves-effect waves-light btn green darken-2 right" id="clear"><i class="material-icons left">clear</i>Clear</a>
+                        <div class="waves-effect waves-light btn green darken-2">
                             <span><i class="material-icons left">cloud_upload</i>File</span>
                             <input type="file" id="file-input" multiple>
                         </div>
@@ -70,12 +71,15 @@
                         </div>
                     </div>
                 </form>
-                <a class="waves-effect waves-light btn green darken-2" id="predict"><i class="material-icons left">online_prediction</i>Predict</a>
-                <a class="waves-effect waves-light btn green darken-2" id="clear"><i class="material-icons left">clear</i>Clear</a>
+                <!-- <a class="waves-effect waves-light btn green darken-2" id="predict"><i class="material-icons left">online_prediction</i>Predict</a>
+                <a class="waves-effect waves-light btn green darken-2" id="clear"><i class="material-icons left">clear</i>Clear</a> -->
             </div>
             <div class="row">
                 <div id="user-output">
                     <!-- output of user test images -->
+                </div>
+                <div id="canvas-div">
+                    <!-- hidden canvas will be here -->
                 </div>
             </div>
         </div>
