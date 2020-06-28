@@ -18,7 +18,7 @@ fileInput.onchange = (uploadEvent) => {
                 <img data-src="${url}">
                 <div class="card-content green-text text-darken-4">
                     <span>
-                        <h5>Prediction will show here.</h5>
+                        <p><big>Prediction will show here.</big></p>
                     </span>
                 </div>
                 <a class="btn-floating halfway-fab waves-effect waves-light green"><i class="material-icons">online_prediction</i></a>

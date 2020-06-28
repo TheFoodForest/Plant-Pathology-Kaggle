@@ -1,8 +1,6 @@
 /*
     model.js
 */
-let model;
-
 
 function chanNorm(image) {
     const means = tf.tensor3d([
@@ -14,18 +12,6 @@ function chanNorm(image) {
     image = tf.sub(image, means);
     image.print();
     return image
-}
-
-
-function decodeImage(imageData) {
-    imageTensor = tf.browser.fromPixels(imageData);
-    const imgScalar = tf.scalar(255);
-    imageTensor = imageTensor.div(imgScalar);
-    // console.log(`In decode: ${imageTensor}`);
-    imageTensor = tf.image.resizeBilinear(imageTensor, [256, 256]); // Needed for resize but HTML canvas tag is controlling size currently
-    imageTensor = chanNorm(imageTensor);
-    imageTensor = imageTensor.expandDims(); // 0, 256, 256, 3
-    return imageTensor
 }
 
 /*
@@ -51,11 +37,25 @@ def decode_image(filename, label=None, image_size=(512, 512)):
 
 */
 
+// Prepare jpeg image for TensorFlow
+function decodeImage(imageData) {
+    imageTensor = tf.browser.fromPixels(imageData);
+    const imgScalar = tf.scalar(255);
+    imageTensor = imageTensor.div(imgScalar);
+    // console.log(`In decode: ${imageTensor}`);
+    imageTensor = tf.image.resizeBilinear(imageTensor, [256, 256]); // Needed for resize but HTML canvas tag is controlling size currently
+    imageTensor = chanNorm(imageTensor);
+    imageTensor = imageTensor.expandDims(); // 0, 256, 256, 3
+    return imageTensor
+}
+
+
+
 
 function renderImageLabel(label, certainty = 0, output) {
     certainty = Math.round(certainty * 100);
     output.innerHTML = null;
-    output.innerHTML += `<h5>${label}, with a ${certainty}% certainty.</h5>`;
+    output.innerHTML += `<p><big>${label}, with a ${certainty}% certainty.</big></p>`;
 };
 
 function translateLabelOutput(prediction) {
@@ -75,6 +75,9 @@ function translateLabelOutput(prediction) {
 };
 
 const predict = async(image, output) => {
+
+    let model;
+
     if (!model) model = await tf.loadLayersModel('/model/model.json');
     // model.summary();
     // console.log(`In predict: ${image}`);
@@ -82,7 +85,7 @@ const predict = async(image, output) => {
 
     // shape has to be the same as it was for training of the model
     var prediction = model.predict(processedImage, verbose = true);
-    var certainty = prediction.max().arraySync(); // idk if this is how we get the certainty but i'm hopeful
+    var certainty = prediction.max().arraySync();
     // console.log(`In predict: ${prediction.max().arraySync()}`);
     // prediction.print();
     prediction = prediction.argMax(axis = 1).arraySync()[0];
