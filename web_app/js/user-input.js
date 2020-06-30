@@ -1,6 +1,7 @@
 const userOutput = document.getElementById("user-output");
 const userClearButton = document.getElementById("clear");
 const fileInput = document.getElementById("file-input");
+const loadDiv = document.querySelector('#loading-overlay');
 
 userClearButton.addEventListener("click", () => userOutput.innerHTML = null);
 
@@ -70,6 +71,12 @@ fileInput.onchange = (uploadEvent) => {
         const btnEl = item.querySelector('a');
 
         btnEl.addEventListener('click', event => {
+
+            // show preloader
+            loadDiv.classList.add('loading-overlay');
+            loadDiv.innerHTML += `<div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>`;
 
             // get image src and draw to hidden canvas then get ImageData and pass that to prediction functions, 
             canvasDiv.innerHTML += '<canvas id="hidden-canvas" width="2048" height="1365" hidden></canvas>';
