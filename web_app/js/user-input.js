@@ -1,11 +1,8 @@
 const userOutput = document.getElementById("user-output");
-// const userPredictButton = document.getElementById("predict");
 const userClearButton = document.getElementById("clear");
 const fileInput = document.getElementById("file-input");
 
 userClearButton.addEventListener("click", () => userOutput.innerHTML = null);
-// userPredictButton.addEventListener("click", () => predict(modelURL, userOutput)); // needs to be made specific to user input images
-
 
 fileInput.onchange = (uploadEvent) => {
 
@@ -62,12 +59,11 @@ fileInput.onchange = (uploadEvent) => {
     });
 
 
-    const imgDiv = document.querySelectorAll('div.card-image');
+    const imgDivs = document.querySelectorAll('div.card-image');
     const canvasDiv = document.querySelector('#canvas-div');
-    const outputs = document.querySelectorAll("div.card-content");
     // Prediction button logic
     // onclick draw img to hidden canvas and then get ImageData to pass to TensorFlow
-    imgDiv.forEach(item => {
+    imgDivs.forEach(item => {
 
         const imgEl = item.querySelector('img');
         const spanEl = item.querySelector('span');
@@ -104,5 +100,3 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems);
 });
-
-// onclick event listener to draw hidden canvas to get imageData

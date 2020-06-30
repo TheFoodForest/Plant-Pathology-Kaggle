@@ -29,6 +29,8 @@
 </head>
 
 <body>
+    <div id="loading-overlay" class="valign-wrapper">
+    </div>
 
     <nav>
         <div class="nav-wrapper green darken-2">
@@ -49,66 +51,102 @@
         <li><a href="user-input.html">Upload your Images</a></li>
         <li><a href="webcam.html">Try with Camera</a></li>
     </ul>
-    <header>
-        <h1>Plant Pathology
+    <header class="center">
+        <h1>
+            Plant Pathology
         </h1>
-        <h5>Predicting Disease from Images of Apple-tree Leaves
-        </h5>
+        <h4>
+            Predicting Disease from Images of Apple-tree Leaves
+        </h4>
     </header>
     <main>
         <div class="container">
             <div class="row" id="test-images">
                 <!-- put test images here with button for each -->
-                <div class="col s12 m6">
-                    <div class="card">
-                        <div class="card-image">
-                            <img name="test-image-0" data-src="/img/Test_0.jpg">
-                            <div class="card-content green-text text-darken-4">
-                                <span>
-                                    <p><big>Prediction will show here.</big></p>
+                <div class="col s12">
+                    <div class="flow-text">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at eros nec arcu feugiat gravida. In convallis tellus in nunc aliquet ultrices. Aliquam luctus euismod gravida. Quisque hendrerit lacinia cursus. Donec eget nulla elit. Phasellus et bibendum
+                            enim. Aenean nulla lectus, rhoncus quis nulla sit amet, fringilla hendrerit magna. Praesent dictum maximus tellus, id consectetur enim viverra vehicula. Etiam accumsan lorem ac eros tincidunt aliquet. Mauris at enim vel odio
+                            molestie commodo. Morbi in leo sed metus elementum rutrum vitae a elit. Cras volutpat placerat lorem, vel euismod nulla interdum sed.
+                        </p>
+                        <div class="col s12 m6 l5 right">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img name="test-image-0" data-src="/img/Train_897.jpg">
+                                    <div class="card-content green-text text-darken-4">
+                                        <span>
+                                    <p>Prediction will show here.</p>
                                 </span>
+                                    </div>
+                                    <a id="test-image-0" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                                    class="material-icons">online_prediction</i></a>
+                                </div>
                             </div>
-                            <a id="test-image-0" class="btn-floating halfway-fab waves-effect waves-light green"><i class="material-icons">online_prediction</i></a>
                         </div>
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <div class="card">
-                        <div class="card-image">
-                            <img name="test-image-1" data-src="/img/Test_489.jpg">
-                            <div class="card-content green-text text-darken-4">
-                                <span>
-                                    <p><big>Prediction will show here.</big></p>
+                        <p>
+                            Cras mattis accumsan risus, quis commodo metus facilisis sit amet. Aenean gravida tellus lacinia ex pharetra, quis vulputate est varius. Aenean gravida arcu nec consectetur laoreet. Nulla egestas sollicitudin lectus eu dignissim. Vestibulum in est posuere,
+                            maximus purus vitae, interdum nisi. Proin auctor tortor id ex hendrerit scelerisque. Nullam ut arcu rhoncus, consequat elit a, consequat sapien. Aliquam ultricies rutrum massa, a viverra tellus commodo ut. Lorem ipsum dolor
+                            sit amet, consectetur adipiscing elit. Duis tempus tempus consequat. Donec in ipsum facilisis, lobortis nisi id, imperdiet metus. Pellentesque ultricies, mi sit amet pellentesque dignissim, dui orci ornare sapien, et semper
+                            quam ex at massa. Sed mauris mi, faucibus eget tincidunt eget, dapibus ac purus. Quisque fringilla a erat vitae bibendum.
+                        </p>
+                        <div class="col s12 m6 l5">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img name="test-image-1" data-src="/img/Train_1526.jpg">
+                                    <div class="card-content green-text text-darken-4">
+                                        <span>
+                                    <p>Prediction will show here.</p>
                                 </span>
+                                    </div>
+                                    <a id="test-image-1" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                                    class="material-icons">online_prediction</i></a>
+                                </div>
                             </div>
-                            <a id="test-image-1" class="btn-floating halfway-fab waves-effect waves-light green"><i class="material-icons">online_prediction</i></a>
                         </div>
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <div class="card">
-                        <div class="card-image">
-                            <img name="test-image-2" data-src="/img/Test_909.jpg">
-                            <div class="card-content green-text text-darken-4">
-                                <span>
-                                    <p><big>Prediction will show here.</big></p>
+                        <p>
+                            Integer quis lobortis libero. Morbi vitae eleifend felis, sed ullamcorper risus. Maecenas eget ex eu sapien blandit lobortis sed at quam. Sed et neque vitae erat luctus consequat sit amet non orci. Ut pellentesque molestie libero vel bibendum. Praesent
+                            ut ex consequat, efficitur turpis quis, sollicitudin lacus. Nam eu eleifend risus. Sed sit amet erat dictum velit pulvinar euismod et ac nulla. Cras iaculis risus sit amet quam suscipit consequat. Praesent ut lorem quis nisi
+                            fringilla fermentum. Quisque sed nisi vitae elit iaculis tempus. Nunc ut leo id mi accumsan sagittis. Donec hendrerit, massa et aliquam pulvinar, eros lectus cursus nisl, eu feugiat est orci nec nibh. Pellentesque lacus purus,
+                            tristique a dui sed, laoreet consequat lorem. Donec quis urna at est sodales fringilla vitae in velit. Donec quis turpis magna.
+                        </p>
+                        <div class="col s12 m6 l5 right">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img name="test-image-2" data-src="/img/Train_1649.jpg">
+                                    <div class="card-content green-text text-darken-4">
+                                        <span>
+                                    <p>Prediction will show here.</p>
                                 </span>
+                                    </div>
+                                    <a id="test-image-2" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                                    class="material-icons">online_prediction</i></a>
+                                </div>
                             </div>
-                            <a id="test-image-2" class="btn-floating halfway-fab waves-effect waves-light green"><i class="material-icons">online_prediction</i></a>
                         </div>
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <div class="card">
-                        <div class="card-image">
-                            <img name="test-image-3" data-src="/img/Test_1589.jpg">
-                            <div class="card-content green-text text-darken-4">
-                                <span>
-                                    <p><big>Prediction will show here.</big></p>
+                        <p>
+                            Suspendisse ligula neque, tincidunt quis maximus vel, condimentum ut erat. Morbi orci mauris, accumsan vitae hendrerit eu, ornare sed mi. Proin dictum ut purus dictum luctus. Fusce pellentesque nisl ac dapibus facilisis. Morbi eget interdum dui. Pellentesque
+                            quis ultrices quam. Phasellus lobortis, sem eget porttitor hendrerit, neque ipsum maximus tellus, et condimentum risus purus in velit. Phasellus consectetur felis elit, nec dictum sapien mollis quis. Donec consectetur pulvinar
+                            purus mollis suscipit.
+                        </p>
+                        <div class="col s12 m6 l5">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img name="test-image-3" data-src="/img/Train_186.jpg">
+                                    <div class="card-content green-text text-darken-4">
+                                        <span>
+                                    <p>Prediction will show here.</p>
                                 </span>
+                                    </div>
+                                    <a id="test-image-3" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                                    class="material-icons">online_prediction</i></a>
+                                </div>
                             </div>
-                            <a id="test-image-3" class="btn-floating halfway-fab waves-effect waves-light green"><i class="material-icons">online_prediction</i></a>
                         </div>
+                        <p>
+                            Phasellus non odio faucibus, convallis sapien nec, tempus nulla. Nullam nisl lectus, iaculis vitae congue ac, pharetra a sapien. Sed placerat velit at semper mollis. Nam rutrum ex eget lorem porttitor, in vestibulum nisi tincidunt. Donec neque tellus,
+                            laoreet sed accumsan quis, laoreet et ipsum. Fusce ante neque, tempor a viverra sit amet, egestas nec tortor.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -119,11 +157,12 @@
     <footer class="page-footer green darken-2">
         <div class="container">
             <div class="row">
-                <div class="col l6 s12">
+                <div class="col m6 s12">
                     <h5 class="white-text">About Us</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.
+                    </p>
                 </div>
-                <div class="col l4 offset-l2 s12">
+                <div class="col m4 offset-m2 s12">
                     <h5 class="white-text">Contact Us</h5>
                     <h6 class="white-text">Graham Penrose</h6>
                     <ul>
@@ -138,7 +177,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
+        <div class="footer-copyright center">
             <div class="container">
                 © 2020 Graham Penrose & Bryan Souza
             </div>
