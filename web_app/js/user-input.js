@@ -16,7 +16,7 @@ fileInput.onchange = (uploadEvent) => {
                 <img data-src="${url}">
                 <div class="card-content green-text text-darken-4">
                     <span>
-                        <p><big>Prediction will show here.</big></p>
+                        <p>Prediction will show here.</p>
                     </span>
                 </div>
                 <a class="btn-floating halfway-fab waves-effect waves-light green"><i class="material-icons">online_prediction</i></a>
@@ -100,10 +100,3 @@ fileInput.onchange = (uploadEvent) => {
         });
     });
 };
-
-// MaterializeCSS functions
-
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems);
-});

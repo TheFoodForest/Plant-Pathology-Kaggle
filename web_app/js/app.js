@@ -95,6 +95,8 @@ const predict = async(image, output) => {
     // console.log(prediction);
     var label = translateLabelOutput(prediction);
     renderImageLabel(label, certainty, output);
-    loadDiv.classList.remove('loading-overlay');
-    loadDiv.innerHTML = null;
+    if (loadDiv) {
+        loadDiv.classList.remove('loading-overlay');
+        loadDiv.innerHTML = null;
+    }
 };
