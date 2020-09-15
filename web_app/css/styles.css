@@ -1,0 +1,31 @@
+body {
+    font-family: 'Jura', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.loading-overlay {
+    opacity: 0.5;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+.video {
+    position: relative; 
+    width: 100%    !important;
+    height: auto   !important;
+}
+
+#controls .col {
+    margin-bottom: .66rem;
+}
