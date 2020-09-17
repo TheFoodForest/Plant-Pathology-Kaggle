@@ -2,6 +2,7 @@ const userOutput = document.getElementById("user-output");
 const userClearButton = document.getElementById("clear");
 const fileInput = document.getElementById("file-input");
 const loadDiv = document.querySelector('#loading-overlay');
+const home = '/Plant-Pathology-Kaggle/'
 
 userClearButton.addEventListener("click", () => userOutput.innerHTML = null);
 
@@ -30,7 +31,6 @@ fileInput.onchange = (uploadEvent) => {
 
     const UserImageLoaderWorker = new Worker('js/workers/image-loader.worker.js');
     const userImgElements = document.querySelectorAll('img[data-src]');
-    console.log(userImgElements);
 
 
     // We should attach the listener before we pass image URLs to the web worker
@@ -38,12 +38,13 @@ fileInput.onchange = (uploadEvent) => {
     UserImageLoaderWorker.addEventListener('message', event => {
         // Get the message data from the event
         const imageData = event.data;
-
         // Select the original element for this image
         const imageElement = document.querySelectorAll(`img[data-src='${imageData.imageURL}']`);
 
         // Changed this for github loading 
-        const objectURL = imageElement[0].attributes[1].nodeValue;
+
+        // console.log(URL.createObjectURL(imageData.blob));
+        const objectURL = URL.createObjectURL(imageData.blob);
 
         // Once the image is loaded, cleanup memory
         imageElement.onload = () => {
