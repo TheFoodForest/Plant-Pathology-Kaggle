@@ -180,7 +180,7 @@ function translateLabelOutput(prediction) {
 
 const predict = async(image, output, index) => {
 
-    if (!model) model = await tf.loadLayersModel('/model/model.json');
+    if (!model) model = await tf.loadLayersModel('model/model.json');
     // model.summary();
     // console.log(`In predict: ${image}`);
     var processedImage = decodeImage(image);
