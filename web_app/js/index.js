@@ -38,7 +38,7 @@ testImgElements.forEach(imageElement => {
 
 // Prediction button logic
 // onclick draw img to hidden canvas and then get ImageData to pass to TensorFlow
-testImgPredictions.forEach(item => {
+testImgPredictions.forEach((item, index) => {
 
     const imgEl = item.querySelector('img');
     const spanEl = item.querySelector('span');
@@ -64,7 +64,7 @@ testImgPredictions.forEach(item => {
             // console.log(imageData);
 
             // pass imageDATA to TensorFlow here
-            predict(imageData, spanEl);
+            predict(imageData, spanEl, index);
         };
 
         // erase canvas to conserve memory

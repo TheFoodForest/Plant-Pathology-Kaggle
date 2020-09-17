@@ -17,10 +17,13 @@ fileInput.onchange = (uploadEvent) => {
                 <div class="card-content green-text text-darken-4">
                     <span>
                         <p>Prediction will show here.</p>
+                        <p>Graph will show here.</p>
                     </span>
+                    
                 </div>
                 <a class="btn-floating halfway-fab waves-effect waves-light green"><i class="material-icons">online_prediction</i></a>
             </div>
+            
         </div>
     </div>`;
     });
@@ -64,7 +67,7 @@ fileInput.onchange = (uploadEvent) => {
     const canvasDiv = document.querySelector('#canvas-div');
     // Prediction button logic
     // onclick draw img to hidden canvas and then get ImageData to pass to TensorFlow
-    imgDivs.forEach(item => {
+    imgDivs.forEach((item, index) => {
 
         const imgEl = item.querySelector('img');
         const spanEl = item.querySelector('span');
@@ -91,7 +94,7 @@ fileInput.onchange = (uploadEvent) => {
                 // console.log(imageData);
 
                 // pass imageDATA to TensorFlow here
-                predict(imageData, spanEl);
+                predict(imageData, spanEl, index);
             };
 
             // erase canvas to conserve memory

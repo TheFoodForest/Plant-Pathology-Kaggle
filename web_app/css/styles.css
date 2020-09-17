@@ -29,3 +29,8 @@ main {
 #controls .col {
     margin-bottom: .66rem;
 }
+
+.highcharts-figure {
+    margin-left: 1%;
+    margin-right: 1%;
+}

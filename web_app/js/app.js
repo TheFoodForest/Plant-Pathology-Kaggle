@@ -56,10 +56,110 @@ function decodeImage(imageData) {
 
 
 
-function renderImageLabel(label, certainty = 0, output) {
-    certainty = Math.round(certainty * 100);
+function renderImageLabel(label, certainty = 0, output, pred, index) {
+
+    certainty = Math.round(certainty * 1000)/10;
     output.innerHTML = null;
-    output.innerHTML += `<p>${label}, with a ${certainty}% certainty.</p>`;
+    output.innerHTML += `<p>${label}, with a ${certainty}% certainty.</p>
+                        <div>
+                        <figure class="highcharts-figure">
+                            <div id="container-${index}" class='container-chart'></div>
+                        </figure>
+                        </div>`;
+
+    
+    
+ 
+    pred = pred.map(d => Math.round(d * 10000) / 100);
+    
+    var chartOptions =  {
+        chart: {
+            type: 'column',
+        },
+        title: {
+            text: 'Prediction Certainty'
+        },
+        subtitle: {
+            text: 'This chart shows how certain the model is in it\'s prediction'
+        },
+        accessibility: {
+            description: 'Chart shows that the number of distinct clients receiving services has consistenly increased since 2015.'
+        },
+        exporting: {
+            buttons: {
+                contextButton: {
+                    menuItems: [
+                        'printChart',
+                        // 'separator',
+                        'downloadPNG',
+                        'downloadJPEG',
+                        'downloadPDF',
+                        'downloadSVG',
+                        'downloadCSV',
+                        'downloadXLS'
+                    ]
+                }
+            }
+        },
+
+
+        xAxis: {
+            categories: [
+                ['Predictions']
+            ],
+            // crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            max: 105,
+            endOnTick: false,
+            title: {
+                text: '',
+                // rotation: 0,
+                // y: 0
+            }
+        },
+        credits: {
+            enabled: true
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0; text-align:right"><b>{point.y}%</b></td></tr>',
+
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Healthy',
+            data: [pred[0]]
+    
+        }, {
+            name: 'Multiple',
+            data: [pred[1]]
+    
+        }, {
+            name: 'Rust',
+            data: [pred[2]]
+    
+        },
+        {
+            name: 'Scab',
+            data: [pred[3]]
+    
+        }],
+        colors: ["#434348","#7cb5ec",  "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#2b908f", "#f45b5b", "#91e8e1"],
+    };
+
+
+    Highcharts.chart(`container-${index}`, chartOptions);
 };
 
 function translateLabelOutput(prediction) {
@@ -78,7 +178,7 @@ function translateLabelOutput(prediction) {
     return label
 };
 
-const predict = async(image, output) => {
+const predict = async(image, output, index) => {
 
     if (!model) model = await tf.loadLayersModel('/model/model.json');
     // model.summary();
@@ -87,6 +187,7 @@ const predict = async(image, output) => {
 
     // shape has to be the same as it was for training of the model
     var prediction = model.predict(processedImage, verbose = true);
+    var pred = prediction.arraySync()[0];
     // console.log(`In predict: ${prediction.max().arraySync()}`);
     // prediction.print();
     var certainty = prediction.max().arraySync();
@@ -94,7 +195,7 @@ const predict = async(image, output) => {
     prediction = prediction.argMax(axis = 1).arraySync()[0];
     // console.log(prediction);
     var label = translateLabelOutput(prediction);
-    renderImageLabel(label, certainty, output);
+    renderImageLabel(label, certainty, output, pred, index);
     if (loadDiv) {
         loadDiv.classList.remove('loading-overlay');
         loadDiv.innerHTML = null;

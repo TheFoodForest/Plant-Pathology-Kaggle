@@ -120,7 +120,6 @@ document.arrive('div.card-image', function () {
         canvasDiv.innerHTML += '<canvas id="hidden-canvas" width="2048" height="1365" hidden></canvas>';
         const canvas = document.querySelector('#hidden-canvas');
         const ctx = canvas.getContext("2d");
-
         const image = new Image;
         image.src = imgEl.getAttribute('src');
         image.onload = () => {
@@ -129,7 +128,7 @@ document.arrive('div.card-image', function () {
             // console.log(imageData);
 
             // pass imageDATA to TensorFlow here
-            predict(imageData, spanEl);
+            predict(imageData, spanEl, imgEl.getAttribute('src'));
         };
 
         // erase canvas to conserve memory
