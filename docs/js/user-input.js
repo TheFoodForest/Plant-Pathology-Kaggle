@@ -28,7 +28,7 @@ fileInput.onchange = (uploadEvent) => {
     </div>`;
     });
 
-    const UserImageLoaderWorker = new Worker('/js/workers/image-loader.worker.js');
+    const UserImageLoaderWorker = new Worker('js/workers/image-loader.worker.js');
     const userImgElements = document.querySelectorAll('img[data-src]');
 
 
