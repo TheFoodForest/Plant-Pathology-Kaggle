@@ -169,7 +169,7 @@ function translateLabelOutput(prediction) {
     if (prediction === 0) {
         label = "Healthy";
     } else if (prediction === 1) {
-        label = "Rust with Scab";
+        label = "Rust and Scab";
     } else if (prediction === 2) {
         label = "Rust";
     } else if (prediction === 3) {

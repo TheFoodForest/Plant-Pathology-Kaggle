@@ -16,7 +16,14 @@ TestImageLoaderWorker.addEventListener('message', event => {
 
     // We can use the `Blob` as an image source
     // We just need to convert it to an object URL first
-    const objectURL = URL.createObjectURL(imageData.blob);
+
+/* 
+
+Changed the objectUrl constant here - the blob makes a special URL - seems to work on local and github when using this method
+
+*/
+    // const objectURL = URL.createObjectURL(imageData.blob);
+    const objectURL = imageElement[0].attributes[1].nodeValue;
 
     // Once the image is loaded, cleanup memory
     imageElement.onload = () => {

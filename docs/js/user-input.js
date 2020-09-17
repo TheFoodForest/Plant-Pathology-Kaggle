@@ -30,6 +30,7 @@ fileInput.onchange = (uploadEvent) => {
 
     const UserImageLoaderWorker = new Worker('js/workers/image-loader.worker.js');
     const userImgElements = document.querySelectorAll('img[data-src]');
+    console.log(userImgElements);
 
 
     // We should attach the listener before we pass image URLs to the web worker
@@ -41,9 +42,8 @@ fileInput.onchange = (uploadEvent) => {
         // Select the original element for this image
         const imageElement = document.querySelectorAll(`img[data-src='${imageData.imageURL}']`);
 
-        // We can use the `Blob` as an image source
-        // We just need to convert it to an object URL first
-        const objectURL = URL.createObjectURL(imageData.blob);
+        // Changed this for github loading 
+        const objectURL = imageElement[0].attributes[1].nodeValue;
 
         // Once the image is loaded, cleanup memory
         imageElement.onload = () => {
