@@ -1,4 +1,4 @@
-const TestImageLoaderWorker = new Worker('/js/workers/image-loader.worker.js');
+const TestImageLoaderWorker = new Worker('js/workers/image-loader.worker.js');
 const testImgElements = document.querySelectorAll('img[data-src]');
 const testImgPredictions = document.querySelectorAll('div.card-image');
 const testCanvasDiv = document.querySelector('#canvas-div');
