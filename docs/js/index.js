@@ -86,8 +86,8 @@ testImgPredictions.forEach((item, index) => {
             }
                console.log(`index-${data}`);
                 var appendTxt = document.getElementById(`index-${data}`)
-                console.log(appendTxt)
-                appendTxt.innerHTML += `<br><br> <strong>${urlsForRec[data][0]} <a href="${urlsForRec[data][1]}">link</a> <strong>`
+                appendTxt.innerHTML = null
+                appendTxt.innerHTML += `<strong>${urlsForRec[data][0]} <a href="${urlsForRec[data][1]}">link</a> <strong><br>`
         });
         };
 

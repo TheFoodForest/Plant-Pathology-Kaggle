@@ -62,13 +62,16 @@
                 <!-- put test images here with button for each -->
                 <div class="col s12">
                     <div class="flow-text">
+                        <div class="row">
                         <p>
                             This website provides a way to quickly diagnose your apple tree for common fungal diseases! Fungal diseases, like rust and scab, are common on fruit trees, and can cause serious damage to new new growth and therefore durastically reduce harvests and overall
                             plant health. With most plant pathoology issues, catching an infection early, and applying the appropriate treatments as soon as possible provides the best chance of defeating the fungi before the infection becomes too widespread
                             to salvage a harvest or even the plant in worst cases. Read through this page to get some more info on how we make predictions based of an image, or go <a href="user-input.html">here</a> to try uploading
                             or taking an image of your own!
                         </p>
-                        <div class="col s12 m6 l5 right">
+                    </div>
+                    <div class="container">
+                        <div class="col s12">
                             <div class="card">
                                 <div class="card-image">
                                     <img name="test-image-0" data-src="img/Train_897.jpeg">
@@ -82,12 +85,17 @@
                                 </div>
                             </div>
                         </div>
-                        <p id="index-Healthy">
+                    </div>
+                    <div class="col s12">
+                        <p >
                             To ask our artificial intelligence for a classification on the health of the provided apple leaf, click the green button to the bottom right of the image! Here we've provided a healhty apple leaf - lets hope our AI can at 
                             lest get this one right! When you press the green button, both the prediction, and a quick bar plot of the certainty of the nueral network's decision will be shown.  The certainty displayed shows how confused the network 
                             may be when telling us if a plant is or isn't healthy - the values represent the probability that the given image belongs to one of the following classes: Helthy, Multiple Diseases, Rust, or Scab.
+                            <p id="index-Healthy"></p>
                         </p>
-                        <div class="col s12 m6 l5">
+                    </div>
+                   <div class="container">
+                        <div class="col s12">
                             <div class="card">
                                 <div class="card-image">
                                     <img name="test-image-1" data-src="img/Train_186.jpeg">
@@ -101,13 +109,18 @@
                                 </div>
                             </div>
                         </div>
-                        <p id='index-Scab'>
-                           Now lets look at an obviously unhealthy leaf.  Can you identify what common fungal disease has taken a stronghold on the leaves in the fore and background of this image?  Click the predict button and see what the 
-                           neural net thinks! <br>
-                           
-                            
+                    </div>
+                    <div class="col s12">
+                        <p>
+                           Now lets look at an obviously unhealthy leaf we've provided. These dark spots that have taken a stronghold on the leaves in the fore and background of this image are caused by the fungus Venturia inaequalis. 
+                           Commonly known as scab, a fungus that overwinters in fallen diseased leaves, then in the spring shoots its spores into the air to land on developing leaves, flowers, fruit, or twigs.  Spores need several hours 
+                           of moisture on the plant surface in order to start new infections, therefore plants with inadequate air flow or plants exposed to splashing irrigation or rain are more susceptible to new infections.
+                           <br>Click the predict button and see what the neural net thinks!
+                           <p id='index-Scab'></p> 
                         </p>
-                        <div class="col s12 m6 l5 right">
+                    </div>
+                    <div class="container">
+                        <div class="col s12">
                             <div class="card">
                                 <div class="card-image">
                                     <img name="test-image-2" data-src="img/Train_1649.jpeg">
@@ -121,12 +134,17 @@
                                 </div>
                             </div>
                         </div>
-                        <p id="index-Rust">
+                    </div>
+                    <div class="col s12">
+                        <p >
                             Suspendisse ligula neque, tincidunt quis maximus vel, condimentum ut erat. Morbi orci mauris, accumsan vitae hendrerit eu, ornare sed mi. Proin dictum ut purus dictum luctus. Fusce pellentesque nisl ac dapibus facilisis. Morbi eget interdum dui. Pellentesque
                             quis ultrices quam. Phasellus lobortis, sem eget porttitor hendrerit, neque ipsum maximus tellus, et condimentum risus purus in velit. Phasellus consectetur felis elit, nec dictum sapien mollis quis. Donec consectetur pulvinar
                             purus mollis suscipit.
+                            <p id="index-Rust"></p>
                         </p>
-                        <div class="col s12 m6 l5">
+                    </div>
+                   <div class="container">
+                        <div class="col s12">
                             <div class="card">
                                 <div class="card-image"> 
                                     <img name="test-image-3" data-src="img/Train_1526.jpeg">
@@ -140,10 +158,14 @@
                                 </div>
                             </div>
                         </div>
-                        <p id='index-Multiple'>
+                    </div>
+                    <div class="col s12">
+                        <p>
                             Phasellus non odio faucibus, convallis sapien nec, tempus nulla. Nullam nisl lectus, iaculis vitae congue ac, pharetra a sapien. Sed placerat velit at semper mollis. Nam rutrum ex eget lorem porttitor, in vestibulum nisi tincidunt. Donec neque tellus,
                             laoreet sed accumsan quis, laoreet et ipsum. Fusce ante neque, tempor a viverra sit amet, egestas nec tortor.
                         </p>
+                        <p id='index-Multiple'></p>
+                    </div>
                     </div>
                 </div>
             </div>
