@@ -5,6 +5,12 @@ const testCanvasDiv = document.querySelector('#canvas-div');
 const testOutputs = document.querySelectorAll("div.card-content");
 const loadDiv = document.querySelector('#loading-overlay');
 
+
+const urlsForRec = {'Healthy': ['How to keep your apple trees healthy: ', 'https://www.indianapolisorchard.com/home-apple-tree-care-spray-guide/'],
+            'Scab': [`Ahhh Scab! Here's a way to treat it: `, 'https://www.planetnatural.com/pest-problem-solver/plant-disease/apple-scab/'],
+            'Rust': [`Rust it is! Here's how you can manage it: ` , 'https://www.planetnatural.com/pest-problem-solver/plant-disease/common-rust/'],
+            'Multiple': [`Multiple Diseases? Here's a way to keep your tree healthy: `, 'https://homeguides.sfgate.com/controlling-fungus-apple-scabs-apple-trees-33679.html#:~:text=Sappy%20bark%20(Trametes%20versicolor)%20is,tree%20debris%20on%20the%20ground.']}
+
 // We should attach the listener before we pass image URLs to the web worker
 // to catch messages sent prior to the event being attached
 TestImageLoaderWorker.addEventListener('message', event => {
@@ -72,7 +78,18 @@ testImgPredictions.forEach((item, index) => {
             // console.log(imageData);
 
             // pass imageDATA to TensorFlow here
-            predict(imageData, spanEl, index);
+            // adding a tiny to add a link to resources on index page 
+           let prediction = predict(imageData, spanEl, index);
+           
+           prediction.then( data => {
+            if (data === 'Rust and Scab') {
+                data = 'Multiple'
+            }
+               console.log(`index-${data}`);
+                var appendTxt = document.getElementById(`index-${data}`)
+                console.log(appendTxt)
+                appendTxt.innerHTML += `<br><br> <strong>${urlsForRec[data][0]} <a href="${urlsForRec[data][1]}">link</a> <strong>`
+        });
         };
 
         // erase canvas to conserve memory

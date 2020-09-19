@@ -63,9 +63,9 @@
                 <div class="col s12">
                     <div class="flow-text">
                         <p>
-                            This website provides a way to quickly diagnose your apple tree for common fungal diseases! Fungal diseases, like rust and scab, are common on fruit trees, and can cause serious damage to new new growth and therefore durastically reduce 
+                            This website provides a way to quickly diagnose your apple tree for common fungal diseases! Fungal diseases, like rust and scab, are common on fruit trees, and can cause serious damage to new growth and therefore durastically reduce 
                             harvests and overall plant health.  With most plant pathoology issues, catching an infection early, and applying the appropriate treatments as soon as possible provides the best chance of defeating the fungi before the infection becomes 
-                            too widespread to salvage a harvest or even the plant in worst cases.  Read through this page to get some more info on how we make predictions based of an image, or go <a href="user-input.html">here</a> to try uploading or taking an image 
+                            too widespread to salvage a harvest or even the plant in worst cases.  Read through this page to get some more info on how we make predictions based of an image, or go <a href="user-input.html">here</a> to try uploading an image or taking an picture 
                             of your own!
                         </p>
                         <div class="col s12 m6 l5 right">
@@ -82,16 +82,15 @@
                                 </div>
                             </div>
                         </div>
-                        <p>
-                            Cras mattis accumsan risus, quis commodo metus facilisis sit amet. Aenean gravida tellus lacinia ex pharetra, quis vulputate est varius. Aenean gravida arcu nec consectetur laoreet. Nulla egestas sollicitudin lectus eu dignissim. Vestibulum in est posuere,
-                            maximus purus vitae, interdum nisi. Proin auctor tortor id ex hendrerit scelerisque. Nullam ut arcu rhoncus, consequat elit a, consequat sapien. Aliquam ultricies rutrum massa, a viverra tellus commodo ut. Lorem ipsum dolor
-                            sit amet, consectetur adipiscing elit. Duis tempus tempus consequat. Donec in ipsum facilisis, lobortis nisi id, imperdiet metus. Pellentesque ultricies, mi sit amet pellentesque dignissim, dui orci ornare sapien, et semper
-                            quam ex at massa. Sed mauris mi, faucibus eget tincidunt eget, dapibus ac purus. Quisque fringilla a erat vitae bibendum.
+                        <p id="index-Healthy">
+                            To ask our artificial intelligence for a classification on the health of the provided apple leaf, click the green button to the bottom right of the image! Here we've provided a healhty apple leaf - lets hope our AI can at 
+                            lest get this one right! When you press the green button, both the prediction, and a quick bar plot of the certainty of the nueral network's decision will be shown.  The certainty displayed shows how confused the network 
+                            may be when telling us if a plant is or isn't healthy - the values represent the probability that the given image belongs to one of the following classes: Helthy, Multiple Diseases, Rust, or Scab.
                         </p>
                         <div class="col s12 m6 l5">
                             <div class="card">
                                 <div class="card-image">
-                                    <img name="test-image-1" data-src="img/Train_1526.jpeg">
+                                    <img name="test-image-1" data-src="img/Train_186.jpeg">
                                     <div class="card-content green-text text-darken-4">
                                         <span>
                                     <p>Prediction will show here.</p>
@@ -102,11 +101,10 @@
                                 </div>
                             </div>
                         </div>
-                        <p>
-                            Integer quis lobortis libero. Morbi vitae eleifend felis, sed ullamcorper risus. Maecenas eget ex eu sapien blandit lobortis sed at quam. Sed et neque vitae erat luctus consequat sit amet non orci. Ut pellentesque molestie libero vel bibendum. Praesent
-                            ut ex consequat, efficitur turpis quis, sollicitudin lacus. Nam eu eleifend risus. Sed sit amet erat dictum velit pulvinar euismod et ac nulla. Cras iaculis risus sit amet quam suscipit consequat. Praesent ut lorem quis nisi
-                            fringilla fermentum. Quisque sed nisi vitae elit iaculis tempus. Nunc ut leo id mi accumsan sagittis. Donec hendrerit, massa et aliquam pulvinar, eros lectus cursus nisl, eu feugiat est orci nec nibh. Pellentesque lacus purus,
-                            tristique a dui sed, laoreet consequat lorem. Donec quis urna at est sodales fringilla vitae in velit. Donec quis turpis magna.
+                        <p id='index-Scab'>
+                           Now lets look at an obviously unhealthy leaf.  Can you identify what common fungal disease has taken a stronghold on the leaves in the fore and background of this image?  Click the predict button and see what the 
+                           neural net thinks! 
+                            
                         </p>
                         <div class="col s12 m6 l5 right">
                             <div class="card">
@@ -122,15 +120,15 @@
                                 </div>
                             </div>
                         </div>
-                        <p>
+                        <p id="index-Rust">
                             Suspendisse ligula neque, tincidunt quis maximus vel, condimentum ut erat. Morbi orci mauris, accumsan vitae hendrerit eu, ornare sed mi. Proin dictum ut purus dictum luctus. Fusce pellentesque nisl ac dapibus facilisis. Morbi eget interdum dui. Pellentesque
                             quis ultrices quam. Phasellus lobortis, sem eget porttitor hendrerit, neque ipsum maximus tellus, et condimentum risus purus in velit. Phasellus consectetur felis elit, nec dictum sapien mollis quis. Donec consectetur pulvinar
                             purus mollis suscipit.
                         </p>
                         <div class="col s12 m6 l5">
                             <div class="card">
-                                <div class="card-image">
-                                    <img name="test-image-3" data-src="img/Train_186.jpeg">
+                                <div class="card-image"> 
+                                    <img name="test-image-3" data-src="img/Train_1526.jpeg">
                                     <div class="card-content green-text text-darken-4">
                                         <span>
                                     <p>Prediction will show here.</p>
@@ -141,7 +139,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p>
+                        <p id='index-Multiple'>
                             Phasellus non odio faucibus, convallis sapien nec, tempus nulla. Nullam nisl lectus, iaculis vitae congue ac, pharetra a sapien. Sed placerat velit at semper mollis. Nam rutrum ex eget lorem porttitor, in vestibulum nisi tincidunt. Donec neque tellus,
                             laoreet sed accumsan quis, laoreet et ipsum. Fusce ante neque, tempor a viverra sit amet, egestas nec tortor.
                         </p>

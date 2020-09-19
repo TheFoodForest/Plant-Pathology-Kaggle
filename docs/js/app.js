@@ -75,12 +75,13 @@ function renderImageLabel(label, certainty = 0, output, pred, index) {
     var chartOptions =  {
         chart: {
             type: 'column',
+            height:150
         },
         title: {
-            text: 'Prediction Certainty'
+            text: ''
         },
         subtitle: {
-            text: 'This chart shows how certain the model is in it\'s prediction'
+            text: ''
         },
         accessibility: {
             description: 'Chart shows that the number of distinct clients receiving services has consistenly increased since 2015.'
@@ -105,7 +106,7 @@ function renderImageLabel(label, certainty = 0, output, pred, index) {
 
         xAxis: {
             categories: [
-                ['Predictions']
+                ['']
             ],
             // crosshair: true
         },
@@ -200,4 +201,5 @@ const predict = async(image, output, index) => {
         loadDiv.classList.remove('loading-overlay');
         loadDiv.innerHTML = null;
     }
+    return label 
 };
