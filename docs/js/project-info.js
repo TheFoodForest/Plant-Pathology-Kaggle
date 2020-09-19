@@ -76,19 +76,9 @@ testImgPredictions.forEach((item, index) => {
             imageData = ctx.getImageData(0, 0, 2048, 1365);
             // console.log(imageData);
 
-            // pass imageDATA to TensorFlow here
-            // adding a tiny to add a link to resources on index page 
+            // pass imageDATA to TensorFlow here 
            let prediction = predict(imageData, spanEl, index);
            
-           prediction.then( data => {
-            if (data === 'Rust and Scab') {
-                data = 'Multiple'
-            }
-               console.log(`index-${data}`);
-                var appendTxt = document.getElementById(`index-${data}`)
-                console.log(appendTxt)
-                appendTxt.innerHTML += `<br><br> <strong>${urlsForRec[data][0]} <a href="${urlsForRec[data][1]}">link</a> <strong>`
-        });
         };
 
         // erase canvas to conserve memory

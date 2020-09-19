@@ -41,15 +41,14 @@
             <ul class="left hide-on-med-and-down">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="user-input.html">Upload your Images</a></li>
-                <li class="active"><a href="webcam.html">Try with Camera</a></li>
+                <li class="active"><a href="project-info.html">More about the project</a></li>
             </ul>
         </div>
     </nav>
-
     <ul class="sidenav" id="mobile-demo">
         <li><a href="index.html">Home</a></li>
         <li><a href="user-input.html">Upload your Images</a></li>
-        <li class="active"><a href="webcam.html">Try with Camera</a></li>
+        <li class="active"><a href="project-info.html">More about the project</a></li>
     </ul>
     <header class="container center">
         <h1>
@@ -62,44 +61,74 @@
     <main>
         <div class="container">
             <div class="row">
-                <div id="video-container" class="row">
-                    <div class="center">
-                        <!-- Use of webcam or device cam goes here -->
-                        <video class="video" autoplay></video>
-                    </div>
-                </div>
-                <div id="controls" class="row">
-                    <div class="row">
-                        <div id="camera-select" class="input-field col s12 m3 right">
-                            <select>
-                                <option value="" disabled selected>Choose your Camera</option>
-                            </select>
-                            <label>Select Camera</label>
-                        </div>
-                        <div class="col s12 m3">
-                            <a id="camera-access" class="waves-effect waves-light btn green darken-2">
-                                <i class="material-icons left">camera</i> Start Camera
-                            </a>
-                        </div>
-                        <div class="col s12 m3">
-                            <a id="camera-exit" class="waves-effect waves-light btn green darken-2">
-                                <i class="material-icons left">stop</i> Stop Camera
-                            </a>
-                        </div>
-                        <div class="col s12 m3">
-                            <a id="capture" class="waves-effect waves-light btn green darken-2">
-                                <i class="material-icons left">online_prediction</i> capture
-                            </a>
+                <p>
+                    Here are a few more sample images you can try while this page is in development :)<br>
+                    Please note these images have not been seen by the neural network during the training process.  
+                </p>
+                <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img name="test-image-2" data-src="img/Test_17.jpg">
+                            <div class="card-content green-text text-darken-4">
+                                <span>
+                            <p>Prediction will show here.</p>
+                        </span>
+                            </div>
+                            <a id="test-image-2" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                            class="material-icons">online_prediction</i></a>
                         </div>
                     </div>
                 </div>
-                <div id="captured-images" class="row">
-                    <!-- Images captured from video stream will appear here -->
-                </div>
-                <div id="canvas-div">
-                    <!-- hidden canvas will be here -->
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img name="test-image-2" data-src="img/Test_135.jpg">
+                            <div class="card-content green-text text-darken-4">
+                                <span>
+                            <p>Prediction will show here.</p>
+                        </span>
+                            </div>
+                            <a id="test-image-2" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                            class="material-icons">online_prediction</i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img name="test-image-2" data-src="img/Test_669.jpg">
+                            <div class="card-content green-text text-darken-4">
+                                <span>
+                            <p>Prediction will show here.</p>
+                        </span>
+                            </div>
+                            <a id="test-image-2" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                            class="material-icons">online_prediction</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img name="test-image-2" data-src="img/Test_245.jpg">
+                            <div class="card-content green-text text-darken-4">
+                                <span>
+                            <p>Prediction will show here.</p>
+                        </span>
+                            </div>
+                            <a id="test-image-2" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                            class="material-icons">online_prediction</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="canvas-div">
+            <!-- hidden canvas will be here -->
         </div>
     </main>
     <footer class="page-footer green darken-2">
@@ -161,7 +190,11 @@
     <script src="js/app.js"></script>
     <!-- UI functionality -->
     <script src="js/arrive.min.js"></script>
-    <script src="js/webcam.js"></script>
+    <script src="js/project-info.js"></script>
 </body>
 
 </html>
+
+
+
+
