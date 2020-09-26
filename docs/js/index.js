@@ -74,7 +74,6 @@ testImgPredictions.forEach((item, index) => {
         image.onload = () => {
             ctx.drawImage(image, 0, 0);
             imageData = ctx.getImageData(0, 0, 2048, 1365);
-            // console.log(imageData);
 
             // pass imageDATA to TensorFlow here
             // adding a tiny to add a link to resources on index page 
