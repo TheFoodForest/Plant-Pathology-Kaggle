@@ -16,7 +16,6 @@ window.mobileCheck = function() {
   const mobile = window.mobileCheck()
 
 
-  console.log(mobile);
 
 function chanNorm(image) {
     return tf.tidy(() => {
@@ -206,11 +205,13 @@ const predict = async(image, output, index) => {
     // model.summary();
     // console.log(`In predict: ${image}`);
     var processedImage = decodeImage(image);
+    
 
     // shape has to be the same as it was for training of the model
     var prediction = model.predict(processedImage, verbose = true);
     
     var pred = prediction.arraySync()[0];
+
     // console.log(`In predict: ${prediction.max().arraySync()}`);
     // prediction.print();
     var certainty = prediction.max().arraySync();
@@ -223,9 +224,10 @@ const predict = async(image, output, index) => {
         loadDiv.classList.remove('loading-overlay');
         loadDiv.innerHTML = null;
     }
-
-
+    console.log('IN SCOPE')
+    console.log(tf.memory());
     tf.engine().endScope();
+    console.log('OUT SCOPE')
     console.log(tf.memory());
     return label 
 };
