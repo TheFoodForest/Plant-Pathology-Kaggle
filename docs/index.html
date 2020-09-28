@@ -38,7 +38,7 @@
             <ul class="left hide-on-med-and-down">
                 <li class="active"><a href="index.html">Home</a></li>
                 <li><a href="user-input.html">Upload your Images</a></li>
-                <li><a href="webcam.html">Try with Camera</a></li>
+                <li><a href="project-info.html">More about the project</a></li>
             </ul>
         </div>
     </nav>
@@ -46,7 +46,7 @@
     <ul class="sidenav" id="mobile-demo">
         <li class="active"><a href="index.html">Home</a></li>
         <li><a href="user-input.html">Upload your Images</a></li>
-        <li><a href="webcam.html">Try with Camera</a></li>
+        <li><a href="project-info.html">More about the project</a></li>
     </ul>
     <header class="center container">
         <h1>
@@ -62,13 +62,16 @@
                 <!-- put test images here with button for each -->
                 <div class="col s12">
                     <div class="flow-text">
+                        <div class="row">
                         <p>
-                            This website provides a way to quickly diagnose your apple tree for common fungal diseases! Fungal diseases, like rust and scab, are common on fruit trees, and can cause serious damage to new new growth and therefore durastically reduce 
-                            harvests and overall plant health.  With most plant pathoology issues, catching an infection early, and applying the appropriate treatments as soon as possible provides the best chance of defeating the fungi before the infection becomes 
-                            too widespread to salvage a harvest or even the plant in worst cases.  Read through this page to get some more info on how we make predictions based of an image, or go <a href="user-input.html">here</a> to try uploading or taking an image 
-                            of your own!
+                            This website provides a way to quickly diagnose your apple tree for common fungal diseases! Fungal diseases, like rust and scab, are common on fruit trees, and can cause serious damage to new new growth and therefore durastically reduce harvests and overall
+                            plant health. With most plant pathoology issues, catching an infection early, and applying the appropriate treatments as soon as possible provides the best chance of defeating the fungi before the infection becomes too widespread
+                            to salvage a harvest or even the plant in worst cases. Read through this page to get some more info on how we make predictions based of an image, or go <a href="user-input.html">here</a> to try uploading
+                            or taking an image of your own!
                         </p>
-                        <div class="col s12 m6 l5 right">
+                    </div>
+                    <div class="container">
+                        <div class="col s12">
                             <div class="card">
                                 <div class="card-image">
                                     <img name="test-image-0" data-src="img/Train_897.jpeg">
@@ -82,16 +85,20 @@
                                 </div>
                             </div>
                         </div>
-                        <p>
-                            Cras mattis accumsan risus, quis commodo metus facilisis sit amet. Aenean gravida tellus lacinia ex pharetra, quis vulputate est varius. Aenean gravida arcu nec consectetur laoreet. Nulla egestas sollicitudin lectus eu dignissim. Vestibulum in est posuere,
-                            maximus purus vitae, interdum nisi. Proin auctor tortor id ex hendrerit scelerisque. Nullam ut arcu rhoncus, consequat elit a, consequat sapien. Aliquam ultricies rutrum massa, a viverra tellus commodo ut. Lorem ipsum dolor
-                            sit amet, consectetur adipiscing elit. Duis tempus tempus consequat. Donec in ipsum facilisis, lobortis nisi id, imperdiet metus. Pellentesque ultricies, mi sit amet pellentesque dignissim, dui orci ornare sapien, et semper
-                            quam ex at massa. Sed mauris mi, faucibus eget tincidunt eget, dapibus ac purus. Quisque fringilla a erat vitae bibendum.
+                    </div>
+                    <div class="col s12">
+                        <p >
+                            To ask our artificial intelligence for a classification on the health of the provided apple leaf, click the green button to the bottom right of the image! Above we've provided a healhty apple leaf - lets hope our AI can at 
+                            lest get this one right! When you press the green button, both the prediction, and a quick bar plot of the certainty of the nueral network's decision will be shown.  The certainty displayed shows how confused the network 
+                            may be when telling us if a plant is or isn't healthy - the values represent the probability that the given image belongs to one of the following classes: Helthy, Multiple Diseases, Rust, or Scab.
+                            <p id="index-Healthy"></p>
                         </p>
-                        <div class="col s12 m6 l5">
+                    </div>
+                   <div class="container">
+                        <div class="col s12">
                             <div class="card">
                                 <div class="card-image">
-                                    <img name="test-image-1" data-src="img/Train_1526.jpeg">
+                                    <img name="test-image-1" data-src="img/Train_186.jpeg">
                                     <div class="card-content green-text text-darken-4">
                                         <span>
                                     <p>Prediction will show here.</p>
@@ -102,13 +109,18 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col s12">
                         <p>
-                            Integer quis lobortis libero. Morbi vitae eleifend felis, sed ullamcorper risus. Maecenas eget ex eu sapien blandit lobortis sed at quam. Sed et neque vitae erat luctus consequat sit amet non orci. Ut pellentesque molestie libero vel bibendum. Praesent
-                            ut ex consequat, efficitur turpis quis, sollicitudin lacus. Nam eu eleifend risus. Sed sit amet erat dictum velit pulvinar euismod et ac nulla. Cras iaculis risus sit amet quam suscipit consequat. Praesent ut lorem quis nisi
-                            fringilla fermentum. Quisque sed nisi vitae elit iaculis tempus. Nunc ut leo id mi accumsan sagittis. Donec hendrerit, massa et aliquam pulvinar, eros lectus cursus nisl, eu feugiat est orci nec nibh. Pellentesque lacus purus,
-                            tristique a dui sed, laoreet consequat lorem. Donec quis urna at est sodales fringilla vitae in velit. Donec quis turpis magna.
+                           Now lets look at an obviously unhealthy leaf we've provided. These dark spots that have taken a stronghold on the leaves in the fore and background of this image are caused by the fungus Venturia inaequalis. 
+                           Commonly known as scab, a fungus that overwinters in fallen diseased leaves, then in the spring shoots its spores into the air to land on developing leaves, flowers, fruit, or twigs.  Spores need several hours 
+                           of moisture on the plant surface in order to start new infections, therefore plants with inadequate air flow or plants exposed to splashing irrigation or rain are more susceptible to new infections.
+                           <br>Click the predict button and see what the neural net thinks!
+                           <p id='index-Scab'></p> 
                         </p>
-                        <div class="col s12 m6 l5 right">
+                    </div>
+                    <div class="container">
+                        <div class="col s12">
                             <div class="card">
                                 <div class="card-image">
                                     <img name="test-image-2" data-src="img/Train_1649.jpeg">
@@ -122,15 +134,23 @@
                                 </div>
                             </div>
                         </div>
-                        <p>
-                            Suspendisse ligula neque, tincidunt quis maximus vel, condimentum ut erat. Morbi orci mauris, accumsan vitae hendrerit eu, ornare sed mi. Proin dictum ut purus dictum luctus. Fusce pellentesque nisl ac dapibus facilisis. Morbi eget interdum dui. Pellentesque
-                            quis ultrices quam. Phasellus lobortis, sem eget porttitor hendrerit, neque ipsum maximus tellus, et condimentum risus purus in velit. Phasellus consectetur felis elit, nec dictum sapien mollis quis. Donec consectetur pulvinar
-                            purus mollis suscipit.
+                    </div>
+                    <div class="col s12">
+                        <p >
+                            Apples and flowering crabapples are both susceptible to several Rust diseases that commonly effect the leaves and fruit of infected trees.  While there are varying types of Rust, all are caused by fungi in the genus 
+                            Gymnosporangium, and have similar visual effects and cause similar damage, so are treated as one disease by this artificial intelligence.  Generally, small yellow spots will begin to form on new growth rapidly after bloom, and 
+                            these spots will grow larger and brown in the center where the fungus eventually creates small black fruiting bodies.  General control methods include avoiding areas heavily populated with Juniperus spp. trees and shrubs - as they cary the disease and allow
+                            for the two year lifecycle creating galls or "cedar apples" that send billions of spores for miles given proper environmental conditions, and fungicides. Damage includes lost fruit and yellowing and dropped leaves - however copmplete defoliation is rare.
+                            <br>Click the predict button to see what the AI thinks!
+                        
+                            <p id="index-Rust"></p>
                         </p>
-                        <div class="col s12 m6 l5">
+                    </div>
+                   <div class="container">
+                        <div class="col s12">
                             <div class="card">
-                                <div class="card-image">
-                                    <img name="test-image-3" data-src="img/Train_186.jpeg">
+                                <div class="card-image"> 
+                                    <img name="test-image-3" data-src="img/Train_1526.jpeg">
                                     <div class="card-content green-text text-darken-4">
                                         <span>
                                     <p>Prediction will show here.</p>
@@ -141,10 +161,15 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col s12">
                         <p>
-                            Phasellus non odio faucibus, convallis sapien nec, tempus nulla. Nullam nisl lectus, iaculis vitae congue ac, pharetra a sapien. Sed placerat velit at semper mollis. Nam rutrum ex eget lorem porttitor, in vestibulum nisi tincidunt. Donec neque tellus,
-                            laoreet sed accumsan quis, laoreet et ipsum. Fusce ante neque, tempor a viverra sit amet, egestas nec tortor.
+                            So what happens when a tree has both diseases? How will the neural network react to having signals for both Rust and Scab in the provided image?  Here we've provided an image of a leaf that has been infeced with both of the fungal diseases 
+                            our network has learned to recognize.  
+                            <br> Go <a href="project-info.html">here</a> to learn more about the training data, neural network used, and general image processing that goes into making these predictions!
                         </p>
+                        <p id='index-Multiple'></p>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -159,21 +184,21 @@
                     <h5 class="white-text">About Us</h5>
                     <div class="row valign-wrapper">
                         <div class="col s2">
-                            <img src="img/graham.jpeg" alt="" class="circle responsive-img">
+                            <img src="img/graham.jpeg" alt="Graham" class="circle responsive-img">
                         </div>
                         <div class="col s10">
                             <span class="white-text">
-                                This is a square image. Add the "circle" class to it to make it appear circular.
+                                Agriculture Focused Data Specialist
                               </span>
                         </div>
                     </div>
                     <div class="row valign-wrapper">
                         <div class="col s2">
-                            <img src="img/bryan.jpeg" alt="" class="circle responsive-img">
+                            <img src="img/bryan.jpeg" alt="Bryan" class="circle responsive-img">
                         </div>
                         <div class="col s10">
                             <span class="white-text">
-                                This is a square image. Add the "circle" class to it to make it appear circular.
+                                Husband | Father | Science Nerd | Python glutton | Data Specialist | Web Dev enthusiast | Golang padawan
                               </span>
                         </div>
                     </div>

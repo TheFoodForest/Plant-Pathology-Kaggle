@@ -9,9 +9,17 @@ userClearButton.addEventListener("click", () => userOutput.innerHTML = null);
 fileInput.onchange = (uploadEvent) => {
 
     var files = uploadEvent.target.files;
-    files.forEach(file => {
+    var numFiles = files.length;
+    // build a row for every two images we have 
+    for (var i = 0; i < (Math.ceil(numFiles/2)); i++) {
+        userOutput.innerHTML += `<div class="row" id="row-${i}"></div>`
+    };
+
+
+    files.forEach((file, index) => {
         url = URL.createObjectURL(file);
-        userOutput.innerHTML += `<div class="col s12 m6">
+        let output = document.getElementById(`row-${Math.ceil((index+1)/2) - 1}`) // just counts each number twice - puts two images per row created above
+        output.innerHTML += `<div class="col s12 m6">
         <div class="card">
             <div class="card-image">
                 <img data-src="${url}">

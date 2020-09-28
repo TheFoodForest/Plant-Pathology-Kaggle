@@ -31,6 +31,7 @@
 <body>
     <div id="loading-overlay" class="valign-wrapper">
     </div>
+
     <nav>
         <div class="nav-wrapper green darken-2">
             <a href="index.html" class="brand-logo center">
@@ -39,18 +40,17 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="left hide-on-med-and-down">
                 <li><a href="index.html">Home</a></li>
-                <li class="active"><a href="user-input.html">Upload your Images</a></li>
-                <li><a href="project-info.html">More about the project</a></li>
+                <li><a href="user-input.html">Upload your Images</a></li>
+                <li class="active"><a href="project-info.html">More about the project</a></li>
             </ul>
         </div>
     </nav>
-
     <ul class="sidenav" id="mobile-demo">
         <li><a href="index.html">Home</a></li>
-        <li class="active"><a href="user-input.html">Upload your Images</a></li>
-        <li><a href="project-info.html">More about the project</a></li>
+        <li><a href="user-input.html">Upload your Images</a></li>
+        <li class="active"><a href="project-info.html">More about the project</a></li>
     </ul>
-    <header class="center">
+    <header class="container center">
         <h1>
             Plant Pathology
         </h1>
@@ -61,30 +61,75 @@
     <main>
         <div class="container">
             <div class="row">
-                <!-- Upload new images from user to test -->
-                <form action="#">
-                    <div class="file-field input-field">
-                        <div class="waves-effect waves-light btn green darken-2">
-                            <span><i class="material-icons left">cloud_upload</i>File</span>
-                            <input type="file" id="file-input" multiple>
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                <p>
+                    Here are a few more sample images you can try while this page is in development :)<br>
+                    Please note these images have not been seen by the neural network during the training process.<br>
+                    Check out the <a href="https://github.com/TheFoodForest/Plant-Pathology-Kaggle/tree/develop">GitHub</a>  
+                </p>
+                <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img name="test-image-2" data-src="img/Test_17.jpg">
+                            <div class="card-content green-text text-darken-4">
+                                <span>
+                            <p>Prediction will show here.</p>
+                        </span>
+                            </div>
+                            <a id="test-image-2" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                            class="material-icons">online_prediction</i></a>
                         </div>
                     </div>
-                </form>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img name="test-image-2" data-src="img/Test_135.jpg">
+                            <div class="card-content green-text text-darken-4">
+                                <span>
+                            <p>Prediction will show here.</p>
+                        </span>
+                            </div>
+                            <a id="test-image-2" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                            class="material-icons">online_prediction</i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
-                <a class="waves-effect waves-light btn green darken-2" id="clear"><i class="material-icons left">clear</i>Clear</a>
-            </div>
-            <div class="row">
-                <div id="user-output">
-                    <!-- output of user test images -->
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img name="test-image-2" data-src="img/Test_669.jpg">
+                            <div class="card-content green-text text-darken-4">
+                                <span>
+                            <p>Prediction will show here.</p>
+                        </span>
+                            </div>
+                            <a id="test-image-2" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                            class="material-icons">online_prediction</i></a>
+                        </div>
+                    </div>
                 </div>
-                <div id="canvas-div">
-                    <!-- hidden canvas will be here -->
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img name="test-image-2" data-src="img/Test_245.jpg">
+                            <div class="card-content green-text text-darken-4">
+                                <span>
+                            <p>Prediction will show here.</p>
+                        </span>
+                            </div>
+                            <a id="test-image-2" class="btn-floating halfway-fab waves-effect waves-light green"><i
+                            class="material-icons">online_prediction</i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+        <div id="canvas-div">
+            <!-- hidden canvas will be here -->
         </div>
     </main>
     <footer class="page-footer green darken-2">
@@ -145,7 +190,12 @@
     <!-- Custom TensorFlow Application -->
     <script src="js/app.js"></script>
     <!-- UI functionality -->
-    <script src="js/user-input.js"></script>
+    <script src="js/arrive.min.js"></script>
+    <script src="js/project-info.js"></script>
 </body>
 
 </html>
+
+
+
+
