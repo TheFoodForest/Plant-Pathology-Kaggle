@@ -40,28 +40,7 @@ function chanNorm(image) {
     })
 }
 
-/*
 
-Python Function to refactor
-
-def decode_image(filename, label=None, image_size=(512, 512)):
-    bits = tf.io.read_file(filename)
-    image = tf.image.decode_jpeg(bits, channels=3)
-    image = tf.cast(image, tf.float64)
-    image = image / 255.0
-    image = np.array(img).astype('float64')
-    image[:,:,2] -= blue_mean 
-    image[:,:,1] -= green_mean 
-    image[:,:,0] -= red_mean 
-    image = tf.cast(image, tf.float32)
-    # image = image - means
-    image = tf.image.resize(image, image_size)
-    if label is None:
-        return image
-    else:
-        return image, label
-
-*/
 
 // Prepare jpeg image for TensorFlow
 function decodeImage(imageData) {
@@ -209,17 +188,28 @@ function translateLabelOutput(prediction) {
     return label
 };
 
+
+
 const predict = async(image, output, index) => {
     
     tf.engine().startScope();
-    
-    if (!model) {model = await tf.loadLayersModel('model/model.json');}
+    if (!model) {model = await tf.loadLayersModel('model/model.json');
+        tf.tidy(() => {
+            var warmInput = tf.zeros([1,256,256,3]);
+            const warmupReslult = model.predict(warmInput);
+            tf.dispose(warmupReslult)
+            tf.dispose(warmInput)
+        });
+    }
+    // if (!model) {model = await tf.loadLayersModel('model/model.json');}
 
+    
     // console.log('MODEL')
     // console.log(tf.memory());
     // model.summary();
     // console.log(`In predict: ${image}`);
     var processedImage = decodeImage(image);
+
     // console.log('processedImage')
     // console.log(tf.memory());
     
@@ -256,16 +246,16 @@ const predict = async(image, output, index) => {
 
 
 
-    if(mobile) {
-        mem = Object(memory());
-        relyable = mem.unreliable;
-        tens = mem.numTensors;
-        buffers = mem.numDataBuffers;
-        bytes = mem.numBytes;
-        bytesGPU = mem.numBytesInGPU;
-        ;
-        alert(`Note for Mobile Debug: \nBytes: ${bytes}\nUnreliable : ${relyable} \nTensors : ${tens}\nBuffers :${buffers}\nGpuBytes : ${bytesGPU}`)
-    }
+    // if(mobile) {
+    //     mem = Object(memory());
+    //     relyable = mem.unreliable;
+    //     tens = mem.numTensors;
+    //     buffers = mem.numDataBuffers;
+    //     bytes = mem.numBytes;
+    //     bytesGPU = mem.numBytesInGPU;
+    //     ;
+    //     alert(`Note for Mobile Debug: \nBytes: ${bytes}\nUnreliable : ${relyable} \nTensors : ${tens}\nBuffers :${buffers}\nGpuBytes : ${bytesGPU}`)
+    // }
     tf.engine().endScope();
 
 
@@ -277,3 +267,4 @@ const predict = async(image, output, index) => {
 
 
 const memory = () => {return tf.memory()};
+
