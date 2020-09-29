@@ -3,7 +3,10 @@
 */
 let model;
 
+tf.enableProdMode(); // hopefully will help with phone bugs
 
+
+console.log(tf.getBackend());
 // migth use this function to change the memory management when on a phone
 
 window.mobileCheck = function() {
@@ -26,6 +29,8 @@ function chanNorm(image) {
     ]);
     // image.print();
     image = tf.sub(image, means);
+    // console.log('MEMORY IN chanNorm');
+    // console.log(tf.memory());
     // image.print();
     return image
     })
@@ -59,15 +64,18 @@ function decodeImage(imageData) {
     return tf.tidy(() => {
     // console.log(`imageData: ${imageData}`);
     imageTensor = tf.browser.fromPixels(imageData);
-    // console.log(`imageTensor: ${imageTensor}`);
+
     const imgScalar = tf.scalar(255);
     // console.log(imgScalar);
     imageTensor = imageTensor.div(imgScalar);
     // console.log(`In decode: ${imageTensor}`);
     imageTensor = tf.image.resizeBilinear(imageTensor, [256, 256]); // Needed for resize but HTML canvas tag is controlling size currently
     imageTensor = chanNorm(imageTensor);
-    imageTensorReturn = imageTensor.expandDims(); // 0, 256, 256, 3
-    return imageTensorReturn
+    imageTensor = imageTensor.expandDims(); // 0, 256, 256, 3
+
+    // console.log('MEMORY IN decodeImage');
+    // console.log(tf.memory());
+    return imageTensor
     })
 }
 
@@ -202,32 +210,66 @@ const predict = async(image, output, index) => {
     tf.engine().startScope();
     
     if (!model) {model = await tf.loadLayersModel('model/model.json');}
+
+    // console.log('MODEL')
+    // console.log(tf.memory());
     // model.summary();
     // console.log(`In predict: ${image}`);
     var processedImage = decodeImage(image);
+    // console.log('processedImage')
+    // console.log(tf.memory());
     
 
     // shape has to be the same as it was for training of the model
-    var prediction = model.predict(processedImage, verbose = true);
+    var prediction = model.predict(processedImage, verbose = false, {batchSize:1});
+    // console.log('prediction')
+    // console.log(tf.memory());
     
     var pred = prediction.arraySync()[0];
+    // console.log('pred')
+    // console.log(tf.memory());
 
     // console.log(`In predict: ${prediction.max().arraySync()}`);
     // prediction.print();
     var certainty = prediction.max().arraySync();
+    // console.log('certainty')
+    // console.log(tf.memory());
     // console.log(certainty);
     prediction = prediction.argMax(axis = 1).arraySync()[0];
+    // console.log('prediction')
+    // console.log(tf.memory());
     // console.log(prediction);
     var label = translateLabelOutput(prediction);
+    // console.log('label')
+    // console.log(tf.memory());
     renderImageLabel(label, certainty, output, pred, index);
     if (loadDiv) {
         loadDiv.classList.remove('loading-overlay');
         loadDiv.innerHTML = null;
     }
-    console.log('IN SCOPE')
-    console.log(tf.memory());
+    // console.log('renderImageLabel')
+    // console.log(tf.memory());
+
+
+
+    if(mobile) {
+        mem = Object(memory());
+        relyable = mem.unreliable;
+        tens = mem.numTensors;
+        buffers = mem.numDataBuffers;
+        bytes = mem.numBytes;
+        bytesGPU = mem.numBytesInGPU;
+        ;
+        alert(`Note for Mobile Debug: \nBytes: ${bytes}\nUnreliable : ${relyable} \nTensors : ${tens}\nBuffers :${buffers}\nGpuBytes : ${bytesGPU}`)
+    }
     tf.engine().endScope();
-    console.log('OUT SCOPE')
-    console.log(tf.memory());
+
+
+
+    // console.log('############### OUT SCOPE ###############')
+    // console.log(tf.memory());
     return label 
 };
+
+
+const memory = () => {return tf.memory()};

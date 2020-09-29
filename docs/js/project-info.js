@@ -83,6 +83,5 @@ testImgPredictions.forEach((item, index) => {
 
         // erase canvas to conserve memory
         testCanvasDiv.innerHTML = null;
-
     });
 });
