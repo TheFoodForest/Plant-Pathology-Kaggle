@@ -19,6 +19,10 @@ window.mobileCheck = function() {
   const mobile = window.mobileCheck()
 
 
+  if (mobile) {
+    tf.setBackend('cpu');
+  }
+
 
 function chanNorm(image) {
     return tf.tidy(() => {
